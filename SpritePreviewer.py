@@ -26,7 +26,7 @@ class SpritePreview(QMainWindow):
 
         # Add any other instance variables needed to track information as the program
         # runs here
-        self.current_fps = 30
+        self.current_fps = 10
         self.current_frame_index = 0
         self.is_playing = False
 
