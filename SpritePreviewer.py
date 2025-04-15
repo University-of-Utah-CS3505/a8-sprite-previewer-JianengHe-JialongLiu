@@ -1,4 +1,4 @@
-# https://github.com/University-of-Utah-CS3505/a8-sprite-previewer-JianengHe
+# https://github.com/University-of-Utah-CS3505/a8-sprite-previewer-JianengHe-JialongLiu
 # created by Jianeng He
 import math
 from PyQt6.QtGui import *
