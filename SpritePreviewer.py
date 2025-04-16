@@ -13,7 +13,6 @@ def load_sprite(sprite_folder_name, number_of_frames):
     for frame in range(number_of_frames):
         folder_and_file_name = sprite_folder_name + "/sprite_" + str(frame).rjust(padding, '0') + ".png"
         frames.append(QPixmap(folder_and_file_name))
-
     return frames
 
 #Main window class for displaying sprite animation previews
