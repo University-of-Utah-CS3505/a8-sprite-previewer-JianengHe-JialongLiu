@@ -56,6 +56,7 @@ class SpritePreview(QMainWindow):
         top_layout = QHBoxLayout()
 
         # Sprite image display
+        # Image display area
         self.image_label = QLabel()
         self.image_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.image_label.setFixedSize(150, 150)
@@ -63,9 +64,8 @@ class SpritePreview(QMainWindow):
 
         # FPS vertical slider
         self.fps_slider = QSlider(Qt.Orientation.Vertical)
-        self.fps_slider.setMinimum(1)
-        self.fps_slider.setMaximum(100)
-        self.fps_slider.setValue(self.current_fps)
+        self.fps_slider.setRange(1, 100)  # 1-100 FPS range
+        self.fps_slider.setValue(self.current_fps)# Set default value
         self.fps_slider.setTickPosition(QSlider.TickPosition.TicksBothSides)
         self.fps_slider.setTickInterval(10)
         self.fps_slider.valueChanged.connect(self.update_fps_label)
@@ -78,6 +78,7 @@ class SpritePreview(QMainWindow):
         self.fps_text_label = QLabel("Frames per second")
         fps_layout.addWidget(self.fps_text_label, alignment=Qt.AlignmentFlag.AlignCenter)
 
+        # Dynamic value display
         self.current_fps_label = QLabel(str(self.current_fps))
         fps_layout.addWidget(self.current_fps_label, alignment=Qt.AlignmentFlag.AlignCenter)
 
@@ -85,7 +86,7 @@ class SpritePreview(QMainWindow):
 
         # Start/Stop button
         self.start_stop_button = QPushButton("Start")
-        self.start_stop_button.clicked.connect(self.toggle_animation)
+        self.start_stop_button.clicked.connect(self.toggle_animation)# Connect to handler
         main_layout.addWidget(self.start_stop_button, alignment=Qt.AlignmentFlag.AlignCenter)
 
         # Set layout and central widget
