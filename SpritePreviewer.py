@@ -1,5 +1,5 @@
 # https://github.com/University-of-Utah-CS3505/a8-sprite-previewer-JianengHe-JialongLiu
-# created by Jianeng He
+# created by Jianeng He, Jialong Liu
 import math
 from PyQt6.QtGui import *
 from PyQt6.QtWidgets import *
