@@ -16,8 +16,8 @@ def load_sprite(sprite_folder_name, number_of_frames):
 
     return frames
 
-class SpritePreview(QMainWindow):
 #Main window class for displaying sprite animation previews
+class SpritePreview(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Sprite Preview")
@@ -90,17 +90,22 @@ class SpritePreview(QMainWindow):
         main_layout.addWidget(self.start_stop_button, alignment=Qt.AlignmentFlag.AlignCenter)
 
         # Set layout and central widget
+        # Apply the complete layout to the frame
         frame.setLayout(main_layout)
+        # Set as the window's central widget
         self.setCentralWidget(frame)
 
         # Menu bar with Pause and Exit
+        # Create menu bar and File menu
         menu = self.menuBar()
         file_menu = menu.addMenu("File")
 
+        # Pause action
         pause_action = QAction("Pause", self)
         pause_action.triggered.connect(self.pause_animation)
         file_menu.addAction(pause_action)
 
+        # Exit action
         exit_action = QAction("Exit", self)
         exit_action.triggered.connect(self.close)
         file_menu.addAction(exit_action)
@@ -108,31 +113,40 @@ class SpritePreview(QMainWindow):
 
     # You will need methods in the class to act as slots to connect to signals
 
+    #Update the FPS display and adjusts animation timing when slider moves
     def update_fps_label(self):
+        # Get current value from the FPS slider
         self.current_fps = self.fps_slider.value()
+        # Update the displayed FPS value
         self.current_fps_label.setText(str(self.current_fps))
         if self.timer.isActive():
             delay = int(1000 / self.current_fps)
-            self.timer.start(delay)
+            self.timer.start(delay)# Restart timer with new interval
 
+    #Handle the start/Stop button click to control the animation play
     def toggle_animation(self):
         if self.is_playing:
+            # If currently playing, stop the animation
             self.timer.stop()
             self.start_stop_button.setText("Start")
             self.is_playing = False
         else:
-            delay = int(1000 / self.current_fps)
+            # If currently stopped, start the animation
+            delay = int(1000 / self.current_fps)# Calculate initial frame delay
             self.timer.start(delay)
             self.start_stop_button.setText("Stop")
             self.is_playing = True
 
+
+#Pauses the animation and updates UI state
     def pause_animation(self):
         self.timer.stop()
         self.start_stop_button.setText("Start")
         self.is_playing = False
 
+#Advances to the next animation frame and cycles back to start when needed
     def update_frame(self):
-        self.image_label.setPixmap(self.frames[self.current_frame_index])
+        self.image_label.setPixmap(self.frames[self.current_frame_index])## Display the current frame's image in the QLabel
         self.current_frame_index = (self.current_frame_index + 1) % self.num_frames
 
 
