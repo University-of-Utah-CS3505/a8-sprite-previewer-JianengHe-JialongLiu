@@ -22,7 +22,7 @@ class SpritePreview(QMainWindow):
         super().__init__()
         self.setWindowTitle("Sprite Preview")
         # This loads the provided sprite and would need to be changed for your own.
-        self.num_frames = 21
+        self.num_frames = 10
         self.frames = load_sprite('spriteImages', self.num_frames)
 
         # Add any other instance variables needed to track information as the program
