@@ -13,6 +13,7 @@ def load_sprite(sprite_folder_name, number_of_frames):
     for frame in range(number_of_frames):
         folder_and_file_name = sprite_folder_name + "/sprite_" + str(frame).rjust(padding, '0') + ".png"
         frames.append(QPixmap(folder_and_file_name))
+
     return frames
 
 #Main window class for displaying sprite animation previews
@@ -38,7 +39,6 @@ class SpritePreview(QMainWindow):
 
         # Make the GUI in the setupUI method
         self.setupUI()
-
 
     def setupUI(self):
         # An application needs a central widget - often a QFrame
@@ -66,7 +66,7 @@ class SpritePreview(QMainWindow):
         self.fps_slider.setRange(1, 100)  # 1-100 FPS range
         self.fps_slider.setValue(self.current_fps)# Set default value
         self.fps_slider.setTickPosition(QSlider.TickPosition.TicksBothSides)
-        self.fps_slider.setTickInterval(10)
+        self.fps_slider.setTickInterval(10)# Tick marks every 10 units
         self.fps_slider.valueChanged.connect(self.update_fps_label)
         top_layout.addWidget(self.fps_slider)
 
