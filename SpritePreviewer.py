@@ -17,22 +17,24 @@ def load_sprite(sprite_folder_name, number_of_frames):
     return frames
 
 class SpritePreview(QMainWindow):
-
+#Main window class for displaying sprite animation previews
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Sprite Preview")
+        # Load sprite animation frames
         # This loads the provided sprite and would need to be changed for your own.
         self.num_frames = 21
         self.frames = load_sprite('spriteImages', self.num_frames)
 
         # Add any other instance variables needed to track information as the program
         # runs here
-        self.current_fps = 10
+        self.current_fps = 10 # Current playback speed
         self.current_frame_index = 0
         self.is_playing = False
 
         # Timer to control sprite animation playback
         self.timer = QTimer()
+        # Connect timer timeout signal to frame update handler
         self.timer.timeout.connect(self.update_frame)
 
         # Make the GUI in the setupUI method
